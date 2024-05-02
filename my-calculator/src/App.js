@@ -1,6 +1,8 @@
+import "./styles.css"
+
 function App() {
   return(
-    <div className="calulator-grid">
+    <div className="calculator-grid">
       <div className="output">
         <div className="previous-operand"></div>
         <div className="current-operand"></div>        

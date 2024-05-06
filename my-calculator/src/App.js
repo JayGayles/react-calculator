@@ -10,25 +10,28 @@ export const ACTIONS = {
   EVALUATE: 'evaluate'
 }
 
-function reducer(state, { type, payload}) {
-  switch(type) {
+function reducer(state, { type, payload }) {
+  switch (type) {
     case ACTIONS.ADD_DIGIT:
-      return{
+      return {
         ...state,
-        currentOperand: `${currentOperand || ""}${payload.digit}`
+        currentOperand: `${state.currentOperand || ""}${payload.digit}`
       }
   }
 }
 
 function App() {
-  const [{ currentOperand, previousOperand, operation }, dispatch] = useReducer(reducer, {})
-  dispatch({ type: ACTIONS.ADD_DIGIT, payload: { digit: 1}})
-
+  const [{ currentOperand, previousOperand, operation }, dispatch] = useReducer(
+    reducer, 
+    {}
+    )
+  
   return(
 
     <div className="calculator-grid">
       <div className="output">
-        <div className="previous-operand">{previousOperand} {operation}</div>
+        <div className="previous-operand">
+          {previousOperand} {operation}</div>
         <div className="current-operand">{currentOperand}</div>        
       </div>
       <button className="span-two">AC</button>
@@ -51,6 +54,5 @@ function App() {
     </div>    
   )
 }
-
 
 export default App;
